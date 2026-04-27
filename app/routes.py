@@ -33,10 +33,11 @@ async def create_form(body: FormCreateRequest):
 @router.get("/forms")
 async def get_form():
     response = await get_forms_service()
+    response_data = [form.model_dump(mode="json") for form in response]
     return JSONResponse(
         content={
             "message": "Record retrieved successfully",
-            "form": response.model_dump(mode="json")
+            "form": response_data
         }, 
         status_code=200
     )
