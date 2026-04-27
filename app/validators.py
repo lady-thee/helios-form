@@ -123,11 +123,11 @@ def _validate_number(field: SchemaField, value: any) -> str | None:
     if not isinstance(value, (int, float)):
         return f"expected a number, got {type(value).__name__}"
 
-    if field.min is not None and value < field.min:
-        return f"must be at least {field.min}"
+    if field.min_value is not None and value < field.min_value:
+        return f"must be at least {field.min_value}"
 
-    if field.max is not None and value > field.max:
-        return f"must be at most {field.max}"
+    if field.max_value is not None and value > field.max_value:
+        return f"must be at most {field.max_value}"
 
     return None
 
